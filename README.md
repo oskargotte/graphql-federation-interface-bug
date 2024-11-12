@@ -30,6 +30,7 @@ curl 'http://localhost:4000/' \
 ```
 
 ### ✅ With __Media__ interface fragment and __typename
+To show that the actual type of each element is __Book__ 
 ```bash
 curl 'http://localhost:4000/' \
   -H 'content-type: application/json' \
@@ -37,10 +38,9 @@ curl 'http://localhost:4000/' \
 ```
 => `{"data":{"topRatedMedia":[{"__typename":"Book","id":"1","title":"TITLE 1","review":1},{"__typename":"Book","id":"2","title":"TITLE 2","review":2}]}}`
 
-Where the actual type of each element is __Book__ 
 
 ### ❌ With __Book__ type fragment and __typename in the fragment
-Where the fields from the __Book__ fragment are missing even though the elements are _Books_ 
+Where the fields from the __Book__ fragment are missing even though the elements are __Books__ 
 ```bash
 curl 'http://localhost:4000/' \
   -H 'content-type: application/json' \
