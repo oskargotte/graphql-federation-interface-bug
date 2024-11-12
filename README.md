@@ -40,6 +40,7 @@ curl 'http://localhost:4000/' \
 Where the actual type of each element is __Book__ 
 
 ### ❌ With __Book__ type fragment and __typename in the fragment
+Where the fields from the __Book__ fragment are missing even though the elements are _Books_ 
 ```bash
 curl 'http://localhost:4000/' \
   -H 'content-type: application/json' \
@@ -47,15 +48,13 @@ curl 'http://localhost:4000/' \
 ```
 => `{"data":{"topRatedMedia":[{"id":"1","title":"TITLE 1"},{"id":"2","title":"TITLE 2"}]}}`
 
-Where the fields from the __Book__ fragment are missing even though the elements are _Books_ 
 
 
 ### ❌ With __Book__ type fragment and __typename inside and outside the fragment as the Apollo Client constructs te queries
+Where the data is null without any error but an extension message specifying the problem 
 ```bash
 curl 'http://localhost:4000/' \
   -H 'content-type: application/json' \
   --data-raw '{"query":"query {topRatedMedia { __typename id title ... on Book { __typename review }}}"}'
 ```
 => `{"data":null,"extensions":{"valueCompletion":[{"message":"Cannot return null for non-nullable array element of type Media at index 0","path":["topRatedMedia",0]},{"message":"Cannot return null for non-nullable field [Media!]!.topRatedMedia","path":["topRatedMedia"]}]}}%`
-
-I.e. no data or error but an extension message specifying the problem 
