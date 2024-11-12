@@ -1,0 +1,21 @@
+services:
+  subgraphs:
+    container_name: subgraphs
+    image: node:20
+    ports:
+      - 4001:4001
+      - 4002:4002
+    volumes:
+      - ./:/usr/app
+    command: sh -c "cd /usr/app && npm i && (npm run server-a &) && npm run server-b"
+  supergraph:
+    image: ghcr.io/apollographql/router:v1.53.0
+    container_name: router
+    ports:
+      - 4000:4000
+    volumes:
+      - ./supergraph.graphql:/dist/schema/local.graphql
+      - ./config/router.yaml:/dist/config/router.yaml
+    command: --supergraph=schema/local.graphql
+    depends_on:
+      - subgraphs

@@ -1,0 +1,31 @@
+{
+  "name": "example",
+  "version": "1.0.0",
+  "description": "",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "compose": "rover supergraph compose --config config/supergraph.yaml --output supergraph.graphql --elv2-license=accept",
+    "router": "router --supergraph=supergraph.graphql --config config/router.yaml --dev",
+    "server-a": "node b-server.js",
+    "server-b": "node a-server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@gitlab.recfut.com:rf/application/example-graphql-subgraph.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "graphql": "^16.8.1",
+    "@apollo/server": "^4.10.0",
+    "@apollo/subgraph": "^2.5.5",
+    "graphql-tag": "^2.12.6"
+  },
+  "devDependencies": {
+    "@graphql-inspector/cli": "^4.0.3",
+    "@apollo/rover": "^0.22.0"
+  }
+}

@@ -1,0 +1,10 @@
+sandbox:
+  enabled: true
+homepage:
+  enabled: false
+supergraph:
+  introspection: true
+  listen: 0.0.0.0:4000
+cors:
+  origins:
+    - http://localhost:3000

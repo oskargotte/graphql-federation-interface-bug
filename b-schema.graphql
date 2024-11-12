@@ -1,0 +1,10 @@
+extend schema @link(url: "https://specs.apollo.dev/federation/v2.7", import: ["@key", "@interfaceObject"])
+
+type Media @key(fields: "id") @interfaceObject {
+  id: ID!
+  review: Int!
+}
+
+type Query {
+  topRatedMedia(id:ID): [Media!]!
+}
